@@ -1,0 +1,26 @@
+{
+  "name": "node-slack-app-core",
+  "version": "0.0.0",
+  "description": "node-slack-app-core",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:jgalmeida/node-slack-app-core.git"
+  },
+  "keywords": [
+    "node-slack-app-core"
+  ],
+  "author": "João Almeida",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "~1.21.5",
+    "mongoose": "~3.8.17",
+    "chai": "~1.9.2",
+    "boom": "~2.5.1",
+    "async": "~0.9.0",
+    "faker": "~2.0.1"
+  }
+}
