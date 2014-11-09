@@ -10,7 +10,7 @@ function bulkImport(channelId, cb) {
   var pipeline = [
     function(next) { return next(null, channelId); },
     getSlackChannelMessages,
-    associateWithChannel,
+    associateFields,
     insertMessages
   ]
 
@@ -33,11 +33,12 @@ function getSlackChannelMessages(channelId, next) {
   }
 }
 
-function associateWithChannel(channelId, collection, next) {
+function associateFields(channelId, collection, next) {
   Async.map(collection, associate, doneCb);
 
   function associate(message, cb) {
     message.channel = channelId;
+    message.date    = new Date(message.ts * 1000);
     return cb(null, message);
   }
 

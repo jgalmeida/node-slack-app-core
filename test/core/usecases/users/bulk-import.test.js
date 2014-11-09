@@ -1,12 +1,13 @@
 var assert   = require('chai').assert
 var setup    = require('../../../setup');
-var Fixtures = require('../../../fixtures');
+var Factory;
 
 describe('UsersBulkImport Usecase', function() {
   var core;
 
   before(function setupTest(done) {
     setup(function(_core) {
+      Factory = require('../../../factory');
       core = _core;
       done();
     });
