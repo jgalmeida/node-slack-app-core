@@ -1,5 +1,6 @@
 var assert   = require('chai').assert
 var setup    = require('../../../setup');
+var Message;
 var Factory;
 
 describe('ImportChannelsMessages Usecase', function() {
@@ -8,6 +9,7 @@ describe('ImportChannelsMessages Usecase', function() {
   before(function setupTest(done) {
     setup(function(_core) {
       Factory = require('../../../factory');
+      Message = require('mongoose').model('Message');
       core = _core;
       done();
     });
@@ -19,7 +21,10 @@ describe('ImportChannelsMessages Usecase', function() {
       core.channels.importMessages('FAKE', function(err, result) {
         assert.notOk(err);
         assert.ok(result);
-        done();
+        Message.count({}, function(err, count) {
+          assert.equal(count, result.length);
+          done();
+        })
       })
     })
 

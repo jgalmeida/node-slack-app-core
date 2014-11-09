@@ -1,6 +1,6 @@
 var Boom        = require('boom');
 var Async       = require('async');
-var SlackClient = require('node-slack-client')(process.env.SLACK_TOKEN);
+var SlackClient = require('../../external').SlackClient(process.env.SLACK_TOKEN);
 
 var Channel     = require('mongoose').model('Channel');
 

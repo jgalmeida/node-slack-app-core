@@ -1,5 +1,6 @@
 var assert   = require('chai').assert
 var setup    = require('../../../setup');
+var Channel;
 var Factory;
 
 describe('ChannelsBulkImport Usecase', function() {
@@ -8,6 +9,7 @@ describe('ChannelsBulkImport Usecase', function() {
   before(function setupTest(done) {
     setup(function(_core) {
       Factory = require('../../../factory');
+      Channel = require('mongoose').model('Channel');
       core = _core;
       done();
     });
@@ -19,7 +21,10 @@ describe('ChannelsBulkImport Usecase', function() {
       core.channels.bulkImport(function(err, result) {
         assert.notOk(err);
         assert.ok(result);
-        done();
+        Channel.count({}, function(err, count) {
+          assert.equal(count, result.length);
+          done();
+        })
       })
     })
 

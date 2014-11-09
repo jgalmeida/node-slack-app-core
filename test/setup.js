@@ -5,6 +5,8 @@ var mongoose = require('mongoose');
 
 function setup(cb) {
   process.env.SLACK_TOKEN = 'FAKETOKEN'
+  process.env.ENVIRONMENT = 'test'
+
   var core = Core(config);
 
   cleanUp(core._database, function(err){
