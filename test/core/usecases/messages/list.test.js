@@ -55,8 +55,8 @@ describe('MessagesList Usecase', function() {
         user:    'jony',
         channel: 'jonychannel',
         date: {
-          $gte: Date.parse('2014-09-01'),
-          $lt:  Date.parse('2014-11-01')
+          $gte: new Date('2014-09-01'),
+          $lte: new Date('2014-11-01')
         }
       }
 

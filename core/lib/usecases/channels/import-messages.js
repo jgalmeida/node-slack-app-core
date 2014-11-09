@@ -23,7 +23,7 @@ function bulkImport(channelId, cb) {
 }
 
 function getSlackChannelMessages(channelId, next) {
-  var qs = { channel: channelId };
+  var qs = { channel: channelId, count: 1000 };
 
   SlackClient.channelsHistory(qs, channelsHistoryCb);
 
